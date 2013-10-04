@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<integer name="shirtPrice">10</integer>
+	<integer name="jeanPrice">20</integer>
+	<integer name="shoePrice">50</integer>
+
+</resources>
