@@ -4,5 +4,6 @@
 	<integer name="shirtPrice">10</integer>
 	<integer name="jeanPrice">20</integer>
 	<integer name="shoePrice">50</integer>
-
+	<integer name="totalPrice">80</integer>
+	
 </resources>

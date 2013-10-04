@@ -5,8 +5,10 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="shirts">Shirts</string>
-    <string name="jeans">Shirts</string>
-    <string name="shoes">Shirts</string>
+    <string name="jeans">Jeans</string>
+    <string name="shoes">Shoes</string>
+    <string name="total">Total Outfit Price</string>
+    <string name="discount">Full Outfit Discounted Price</string>
    
     
 

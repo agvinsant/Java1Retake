@@ -15,20 +15,17 @@ public class MainActivity extends Activity {
     //setting the variables for the main layout and params.
 	LinearLayout ll;
 	LinearLayout.LayoutParams lp;
-	EditText et1;
-	EditText et2;
-	EditText et3;
+	LinearLayout.LayoutParams fp;
+	EditText et;
 	TextView results;
 	LinearLayout form;
 	Boolean special;
 	Context context;
 	Resources res;
-	String no1;
-	String no2;
-	String no3;
-	int finalString1;
-	int finalString2;
-	int finalString3;
+	TextView outfits;
+	String editText;
+	
+	
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +33,7 @@ public class MainActivity extends Activity {
         
         context = this;
         res = getResources();
+        special = false;
         
         // Setting the linear layout variable. 
         ll = new LinearLayout(this);
@@ -50,37 +48,26 @@ public class MainActivity extends Activity {
         // Creating a text area
         TextView tv = new TextView(context);
         // putting static text in the text area
-        tv.setText("Check item prices and specials.");
+        tv.setText("Check outfit prices and specials.");
         // putting the text view into the layout
         ll.addView(tv);
         
         // creating the form layout (nested layout)
         form = new LinearLayout(context);
-        lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        form.setLayoutParams(lp);
+        fp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        form.setLayoutParams(fp);
         form.setOrientation(LinearLayout.HORIZONTAL);
         
         
         // creating the text editor
-        et1 = new EditText(context);
-        et2 = new EditText(context);
-        et3 = new EditText(context);
+        et = new EditText(context);
         // setting hint text
-        et1.setHint("# shirts");
-        et2.setHint("# jeans");
-        et3.setHint("# shoes");
-        //this will get a string  
-        no1=et1.getText().toString(); 
-        no2=et2.getText().toString(); 
-        no3=et3.getText().toString(); 
-       //this will get a no from the string
-        finalString1=Integer.parseInt(no1); 
-        finalString2=Integer.parseInt(no2); 
-        finalString3=Integer.parseInt(no3); 
+        et.setHint("Number of Outfits");
         // setting into the view
-        form.addView(et1);
-        form.addView(et2);
-        form.addView(et3);
+        form.addView(et);
+        
+        outfits = new TextView(context);
+       
         
         // setting a button
         Button b = new Button(context);
@@ -88,6 +75,7 @@ public class MainActivity extends Activity {
         b.setText("OK");
         // adding the button to the view
         form.addView(b);
+        
         
         // creating a click event for the button
         b.setOnClickListener(new View.OnClickListener() {
@@ -98,30 +86,67 @@ public class MainActivity extends Activity {
 				String item1= res.getString(R.string.shirts);
 				String item2= res.getString(R.string.jeans);
 				String item3= res.getString(R.string.shoes);
-				
+				String total= res.getString(R.string.total);
+				String discount = res.getString(R.string.discount);
+
 				// setting ints from resources
 				int price1= res.getInteger(R.integer.shirtPrice);
 				int price2= res.getInteger(R.integer.jeanPrice);
 				int price3= res.getInteger(R.integer.shoePrice);
+				int totalP= res.getInteger(R.integer.totalPrice);
+				int disP= totalP-20;
+				
 				
 				// setting the total with number of items from edit text
+			    editText = et.getText().toString();
+				// setting the editText to an integer
+				int finalPrice = Integer.parseInt(editText);
+				// calculations... final non discounted price
+				int finalTotal = totalP * finalPrice;
+				// setting discounted price
+				int finalDisTotal = disP * finalPrice;
+					// setting the results text view
+					results.setText(item1 + ": $" + price1 + "\r\n" + 
+							item2 + ": $" + price2 + "\r\n" + 
+							item3 + ": $" + price3 + "\r\n" +
+							total + ": $" + totalP + "\r\n" + "\r\n" +
+							"You chose " + finalPrice + " outfits" + "\r\n" + "\r\n"
+							);
+							if (finalPrice>=3){
+								special = true;
+								if(special){
+									
+									results.append(discount + ": $" + disP + "\r\n" + "Final Price: $" + finalDisTotal);
+									
+								}
+							}else{
+								results.append("Final Price: $" + finalTotal);
+							}
 				
-				results.setText(item1 + ": $" + price1 + "\r\n" + 
-						item2 + ": $" + price2 + "\r\n" + 
-						item3 + ": $" + price3 + "\r\n"
-				
-						);
 			}
         });
         
+        // Button Created to run while loop, really has no place in the app but added for requirements
+        Button cart= new Button(context);
+        cart.setText("Run Loop");
+        cart.setLayoutParams(fp);
+        cart.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			int i = 0;
+				while(i<5){
+					// loop should output 4
+					outfits.setText("Simply for show: " + i  + "\r\n" + "This shows the final output of a while loop added in my code all for show.");
+					i++;
+				}
+				
+			}
+		});
         
-        	
         
-       // populating the form layout
-        form.addView(et1);
-        form.addView(et2);
-        form.addView(et3);
-        form.addView(b);
+        
         
         // adding the form field layout to the main layout or view
         ll.addView(form);
@@ -129,6 +154,8 @@ public class MainActivity extends Activity {
         // adding a text view for the results of the conversion
         results = new TextView(context);
         ll.addView(results);
+        ll.addView(cart);
+        ll.addView(outfits);
         
         // Setting the main content view into the application. 
         setContentView(ll);
