@@ -1,3 +1,13 @@
+/*
+ *  project Java1Project
+ * 
+ * package com.avinsant.java1project
+ * 
+ * @author Adam Vinsant
+ * 
+ * date Oct 4, 2013
+ * 
+ */
 package com.avinsant.java1project;
 
 import android.os.Bundle;
