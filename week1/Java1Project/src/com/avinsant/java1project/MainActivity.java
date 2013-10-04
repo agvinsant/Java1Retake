@@ -6,30 +6,29 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
     //setting the variables for the main layout and params.
 	LinearLayout ll;
 	LinearLayout.LayoutParams lp;
-	EditText et;
+	EditText et1;
+	EditText et2;
+	EditText et3;
 	TextView results;
 	LinearLayout form;
 	Boolean special;
-	Spinner itemSpinner;
-	String[] itemName;
 	Context context;
 	Resources res;
-	String no;
-	int no2;
+	String no1;
+	String no2;
+	String no3;
+	int finalString1;
+	int finalString2;
+	int finalString3;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,15 +62,25 @@ public class MainActivity extends Activity {
         
         
         // creating the text editor
-        et = new EditText(context);
+        et1 = new EditText(context);
+        et2 = new EditText(context);
+        et3 = new EditText(context);
         // setting hint text
-        et.setHint("number of items");
+        et1.setHint("# shirts");
+        et2.setHint("# jeans");
+        et3.setHint("# shoes");
         //this will get a string  
-        no=et.getText().toString(); 
+        no1=et1.getText().toString(); 
+        no2=et2.getText().toString(); 
+        no3=et3.getText().toString(); 
        //this will get a no from the string
-        no2=Integer.parseInt(no);              
+        finalString1=Integer.parseInt(no1); 
+        finalString2=Integer.parseInt(no2); 
+        finalString3=Integer.parseInt(no3); 
         // setting into the view
-        form.addView(et);
+        form.addView(et1);
+        form.addView(et2);
+        form.addView(et3);
         
         // setting a button
         Button b = new Button(context);
@@ -85,41 +94,33 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// setting the float variables for the denominations
+				// setting strings from resources
+				String item1= res.getString(R.string.shirts);
+				String item2= res.getString(R.string.jeans);
+				String item3= res.getString(R.string.shoes);
+				
+				// setting ints from resources
+				int price1= res.getInteger(R.integer.shirtPrice);
+				int price2= res.getInteger(R.integer.jeanPrice);
+				int price3= res.getInteger(R.integer.shoePrice);
+				
+				// setting the total with number of items from edit text
+				
+				results.setText(item1 + ": $" + price1 + "\r\n" + 
+						item2 + ": $" + price2 + "\r\n" + 
+						item3 + ": $" + price3 + "\r\n"
+				
+						);
 			}
         });
         
-        	// initializing the itemName string
-        	itemName = res.getStringArray(R.array.itemArray);
         
-        	//spinner adapter
-      		ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, itemName);
-      		spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-      		
-      		//creating the spinner
-      		itemSpinner = new Spinner(context);
-      		itemSpinner.setAdapter(spinnerAdapter);
-      		
-      		//spinner onClick function
-      		itemSpinner.setOnItemSelectedListener(new OnItemSelectedListener(){
-
-      			@Override
-      			public void onItemSelected(AdapterView<?> parent, View view,
-      					int position, long id) {
-      				Toast.makeText(context, "You selected " + itemName[position], Toast.LENGTH_LONG).show();
-      			}
-
-      			@Override
-      			public void onNothingSelected(AdapterView<?> arg0) {
-      				// TODO Auto-generated method stub
-
-      			}
-
-      		});
-      		
+        	
         
        // populating the form layout
-        form.addView(et);
+        form.addView(et1);
+        form.addView(et2);
+        form.addView(et3);
         form.addView(b);
         
         // adding the form field layout to the main layout or view

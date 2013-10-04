@@ -4,11 +4,10 @@
     <string name="app_name">Item List and Pricing</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-   <string-array name="itemArray">
-   		<item>Shirts</item>
-   		<item>Jeans</item>
-   		<item>Shoes</item>
-   </string-array>
+    <string name="shirts">Shirts</string>
+    <string name="jeans">Shirts</string>
+    <string name="shoes">Shirts</string>
+   
     
 
 </resources>
