@@ -1,3 +1,13 @@
+/*
+ *  project Java1week2
+ * 
+ * package com.agvinsant.lib
+ * 
+ * @author Adam Vinsant
+ * 
+ * date Oct 8, 2013
+ * 
+ */
 package com.agvinsant.lib;
 
 public enum Prices {

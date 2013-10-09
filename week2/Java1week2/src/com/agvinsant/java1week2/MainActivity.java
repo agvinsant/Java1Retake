@@ -1,3 +1,13 @@
+/*
+ *  project Java1week2
+ * 
+ * package com.agvinsant.java1week2
+ * 
+ * @author Adam Vinsant
+ * 
+ * date Oct 8, 2013
+ * 
+ */
 package com.agvinsant.java1week2;
 
 import android.os.Bundle;
@@ -15,6 +25,7 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 
+	// Global variables
 	LinearLayout ll;
 	String[] compList;
 	int[] compPrices;
@@ -42,7 +53,7 @@ public class MainActivity extends Activity {
 			topLine.setText("Apple Computer Starting Prices");
 			ll.addView(topLine);
 			
-			// creating some space betwen text views
+			// creating some space between text views
 			TextView blank  = new TextView(this);
 			blank.setText(" ");
 			ll.addView(blank);
@@ -80,10 +91,12 @@ public class MainActivity extends Activity {
 						String listText = compList[position].toString();
 						int priceText = compPrices[position];
 						
-						resInfo.setText("Computer Type: " + listText + "\r\n" + "Starting Price: $" + priceText);
+						// setting results using resource arrays
+						resInfo.setText("Computer Type: " + listText + "\r\n" + "Starting Price: $" + priceText + "\r\n");
 						
-						compInfo.setText("This text would come from JSON DATA" + "\r\n" + JSON.readJSON(listText));
-						compPrice.setText("So would this data..." + "\r\n" + priceText);
+						// setting results with json data
+						compInfo.setText("This data would be pulled from JSON data:" + "\r\n" + JSON.readJSON(listText));
+
 					
 				}
 			});
@@ -95,21 +108,15 @@ public class MainActivity extends Activity {
 					
 			// this view shows results pulled from resources 
 			resInfo = new TextView(this);
-			lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+			lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 			resInfo.setLayoutParams(lp);
 			ll.addView(resInfo);
 			
 			// computer type results
 			compInfo = new TextView(this);
-			lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+			lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 			compInfo.setLayoutParams(lp);
 			ll.addView(compInfo);
-			
-			// computer price results
-			compPrice = new TextView(this);
-			lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-			compPrice.setLayoutParams(lp);
-			ll.addView(compPrice);
 			
 			// setting the content view
 			setContentView(ll);

@@ -1,3 +1,13 @@
+/*
+ *  project Java1week2
+ * 
+ * package com.agvinsant.java1week2
+ * 
+ * @author Adam Vinsant
+ * 
+ * date Oct 8, 2013
+ * 
+ */
 package com.agvinsant.java1week2;
 
 import org.json.JSONException;
