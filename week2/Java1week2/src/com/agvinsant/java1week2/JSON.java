@@ -11,8 +11,8 @@ public class JSON {
 
 public static JSONObject buildJSON(){
 	
-	// creating the genre object
-	JSONObject genreObject = new JSONObject();
+	// creating the main json object
+	JSONObject computerObject = new JSONObject();
 	
 try {
 	
@@ -33,7 +33,7 @@ try {
 }	
 	
 	
-	return genreObject;
+	return computerObject;
 }
 
 public static String readJSON(String selected){
