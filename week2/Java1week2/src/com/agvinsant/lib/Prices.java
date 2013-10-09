@@ -21,17 +21,17 @@ public enum Prices {
 	private final String computerType;
 	private final String computerValue;
 	
-	// sets the genre type and bpm. 
+	// sets the computer type and price. 
 	private Prices(String computerType, String computerValue) {
 		this.computerType = computerType;
 		this.computerValue = computerValue;
 	}
-	// sets the genreType data object
+	// sets the computer data object
 	public String setComputerType(){
 		
 		return computerType;
 	}
-	// sets the bpm data object
+	// sets the price data object
 	public String setComputerValue(){
 		
 		return computerValue;

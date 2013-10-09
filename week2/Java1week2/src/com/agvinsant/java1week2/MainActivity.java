@@ -78,16 +78,15 @@ public class MainActivity extends Activity {
 			list.setLayoutParams(lp);
 			ll.addView(list);
 			
-		
-			
+			// setting the event when a list option is clicked. setting new item click listener
 			list.setOnItemClickListener(new OnItemClickListener() {
-
+				
+				// happens when item is clicked
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view, int position,
 						long id) {
-					
-					
-						// Pulling Info in from JSON...No file, supposed to be using enum
+
+					// Pulling Info in from JSON...No file, supposed to be using enum
 						String listText = compList[position].toString();
 						int priceText = compPrices[position];
 						
@@ -95,16 +94,14 @@ public class MainActivity extends Activity {
 						resInfo.setText("Computer Type: " + listText + "\r\n" + "Starting Price: $" + priceText + "\r\n");
 						
 						// setting results with json data
-						compInfo.setText("This data would be pulled from JSON data:" + "\r\n" + JSON.readJSON(listText));
-
-					
+						compInfo.setText("This data would be pulled from JSON data:" + "\r\n" + JSON.readJSON(listText));				
 				}
 			});
 			
 			// creating some space betwen text views
-					TextView blank2  = new TextView(this);
-					blank2.setText(" ");
-					ll.addView(blank2);
+			TextView blank2  = new TextView(this);
+			blank2.setText(" ");
+			ll.addView(blank2);
 					
 			// this view shows results pulled from resources 
 			resInfo = new TextView(this);
