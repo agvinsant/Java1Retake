@@ -1,3 +1,13 @@
+/*
+ *  project Java1week3
+ * 
+ * package com.agvinsant.java1week3
+ * 
+ * @author Adam Vinsant
+ * 
+ * date Oct 15, 2013
+ * 
+ */
 package com.agvinsant.java1week3;
 
 import android.os.Bundle;
