@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Java1week3</string>
+    <string name="app_name">NIN The Fragile Samples</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string-array name="genreArray">
+        <item >The Fragile</item>
+        <item >Into The Void</item>
+        <item>The Day The World Went Away</item>
+        <item>Just Like You Imagined</item>
+        <item>Somewhat Damaged</item>
+        <item>Were In This Together</item>
+    </string-array>
 
 </resources>

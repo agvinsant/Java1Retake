@@ -5,13 +5,14 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+
 public class BasicLayout {
 	// creating the linear layout
     public static LinearLayout layoutWithButton(Context context, String buttonTxt){
             
             // setting the linear layout
             LinearLayout ll = new LinearLayout(context);
-            LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
+            LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
             ll.setLayoutParams(lp);
             
             //Main button created
