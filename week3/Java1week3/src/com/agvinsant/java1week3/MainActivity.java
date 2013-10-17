@@ -116,6 +116,7 @@ public class MainActivity extends Activity {
 
 		});
 
+		// setting the jsonView parameters and such
 		jsonView = new TextView(context);
 		LayoutParams jp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		jsonView.setLayoutParams(jp);
@@ -133,16 +134,15 @@ public class MainActivity extends Activity {
 				String alName = albumNameList.get(pos).toString();  
 				String tSite = trackSiteList.get(pos).toString();
 				String tName = trackNameList.get(pos).toString();
-
-
 				
+				// setting items into the jsonView and formating for style
 				jsonView.setText("Song Name:  " + tName + "\r\n" + "\r\n" + "Artist Name:   " +arName+ "\r\n"+ "\r\n"+"Album Name:   "+alName+ "\r\n" +"\r\n"+ "Song Website:   " +tSite);
 				
 			}
 		});
 		
 		
-		
+		// creating the connection view to show the device's connection status
 		connectedView = new TextView(context);
 		LayoutParams cp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		connectedView.setLayoutParams(cp);
@@ -185,10 +185,9 @@ public class MainActivity extends Activity {
         Log.i("testing Layouts", "checking this point");
         
 		
-}		
+}	
+	// FINISH onCreate................
 		
-
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -196,7 +195,7 @@ public class MainActivity extends Activity {
 		return true;
 	}
 	
-	//get URL
+	//get URL... creating the URL that is sent to request data from the API
 		private void getSongInfo(){
 			
 			Log.i("getSongInfo", "hit function");
