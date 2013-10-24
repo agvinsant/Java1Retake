@@ -50,20 +50,16 @@ public class MainActivity extends Activity {
 	String trackName;
 	String artistName;
 	String albumName;
-	String trackSite;
-	String trackPreview;
 	String headString;
-	String tPreview;
 	public static URL finalURL;
 	int pos;
-	Button webButton;
+	Button mb;
+	TextView headView;
 
 	
 	ArrayList<String> artistNameList = new ArrayList<String>();
 	ArrayList<String> albumNameList = new ArrayList<String>();
-	ArrayList<String> trackSiteList = new ArrayList<String>();
 	ArrayList<String> trackNameList = new ArrayList<String>();
-	ArrayList<String> trackPreviewList = new ArrayList<String>();
 	
 	Boolean connected = false;
 	
@@ -83,7 +79,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.layout);
 		
 		//setting additional text views
-		TextView headView = (TextView) findViewById(R.id.headView);
+		headView = (TextView) findViewById(R.id.headView);
 		headView.setText(headString);
 		
 		//spinner adapter
@@ -109,47 +105,33 @@ public class MainActivity extends Activity {
 
 		});
 		
-		// setting the spinner position variable
-		 pos = viewSpinner.getSelectedItemPosition();
-
+		
+		
 		// setting the jsonView from layout
 		jsonView = (TextView) findViewById(R.id.jsonView);
 		
 		// Creating button from resource layout
-		Button mb = (Button) findViewById(R.id.button1);
+		mb = (Button) findViewById(R.id.button1);
 		mb.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
+				// setting the spinner position variable
+				pos = viewSpinner.getSelectedItemPosition();
 				// Get selected song info
 				String arName = artistNameList.get(pos).toString();
 				String alName = albumNameList.get(pos).toString();  
-				String tSite = trackSiteList.get(pos).toString();
 				String tName = trackNameList.get(pos).toString();
 				
 				// setting items into the jsonView and formating for style
-				jsonView.setText("Song Name:  " + tName + "\r\n" + "\r\n" + "Artist Name:   " +arName+ "\r\n"+ "\r\n"+"Album Name:   "+alName+ "\r\n" +"\r\n"+ "Song Website:   " +tSite);
+				jsonView.setText("Song Name:  " + tName + "\r\n" + "\r\n" + "Artist Name:   " +arName+ "\r\n"+ "\r\n"+"Album Name:   "+alName+ "\r\n" +"\r\n");
 				
-				webButton.setVisibility(View.VISIBLE);
 			}
 		});
 		
-	   tPreview = trackPreviewList.get(pos).toString();
-		
-		// button to switch to webView in Chrome
-		webButton = (Button) findViewById(R.id.button2);
-		webButton.setVisibility(View.INVISIBLE);
-		webButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				
-				// setting the web view for the Listen Now button... 	This will send the user to the preview page for the selected song.
-				WebView webView = (WebView) findViewById(R.id.webView);
-				webView.loadUrl(tPreview);
-			}
-
-		});
+		// setting the web view 	
+		WebView webView = (WebView) findViewById(R.id.webView);
+		webView.loadUrl("http://www.nin.com");
 		
 		// creating the connection view to show the device's connection status
 		connectedView = (TextView) findViewById(R.id.connectionView);
@@ -192,7 +174,6 @@ public class MainActivity extends Activity {
 	protected boolean selectionAvailable(int selection) {
 		if(artistNameList == null || artistNameList.size() < (selection + 1))return false;
 		if(albumNameList == null || albumNameList.size() < (selection + 1))return false;
-		if(trackSiteList == null || trackSiteList.size() < (selection + 1))return false;
 
 		return true;
 	}
@@ -250,16 +231,14 @@ public class MainActivity extends Activity {
 							// getting info from JSONArray tags						
 							artistName= child.getString("artistName");
 							albumName = child.getString("collectionName");
-							trackSite= child.getString("trackViewUrl");
 							trackName = child.getString("trackName");
-							trackPreview = child.getString("trackPreview");
+
 							
 							//populating the array lists
 							artistNameList.add(artistName);
 							albumNameList.add(albumName);  
-							trackSiteList.add(trackSite);
 							trackNameList.add(trackName);
-							trackPreviewList.add(trackPreview);
+
 					}
 			
 					} catch (JSONException e) {

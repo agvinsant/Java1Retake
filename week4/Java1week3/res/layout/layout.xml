@@ -5,14 +5,13 @@
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
     android:isScrollContainer="true"
-    android:orientation="vertical" >
-
+    android:orientation="vertical" > 
+        
     <TextView
         android:id="@+id/connectionView"
         style="@style/textStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:text="@string/networkConn"
         android:textSize="12sp" />
 
@@ -22,7 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="10dp"
         android:text="@string/networkConn" />
 
     <Spinner
@@ -44,17 +42,10 @@
         android:layout_height="wrap_content"
         style="@style/textStyle" />
 
-    <Button
-        android:id="@+id/button2"
-        style="@style/buttonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:text="@string/listenNow" />
-
-    <WebView
+     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" /> 
+
 
 </LinearLayout>

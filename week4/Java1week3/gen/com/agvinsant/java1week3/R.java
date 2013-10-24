@@ -27,15 +27,14 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f090008;
+        public static final int action_settings=0x7f090007;
         public static final int button1=0x7f090004;
-        public static final int button2=0x7f090006;
         public static final int connectionView=0x7f090001;
         public static final int headView=0x7f090002;
         public static final int jsonView=0x7f090005;
         public static final int linearLayout=0x7f090000;
         public static final int spinner1=0x7f090003;
-        public static final int webView=0x7f090007;
+        public static final int webView=0x7f090006;
     }
     public static final class layout {
         public static final int jsonview=0x7f030000;
