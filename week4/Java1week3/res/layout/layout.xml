@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
@@ -8,43 +9,40 @@
 
     <TextView
         android:id="@+id/connectionView"
+        style="@style/textStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/networkConn" 
-        android:textSize="12sp"
         android:padding="10dp"
-        style="@style/textStyle" />
-    
-    <TextView 
+        android:text="@string/networkConn"
+        android:textSize="12sp" />
+
+    <TextView
         android:id="@+id/headView"
+        style="@style/textStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/networkConn" 
         android:layout_gravity="center"
         android:padding="10dp"
-        style="@style/textStyle" />
-        
+        android:text="@string/networkConn" />
 
-    
     <Spinner
         android:id="@+id/spinner1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    
+
     <Button
         android:id="@+id/button1"
+        style="@style/buttonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="@string/show_song_info"
-        style="@style/buttonStyle" />
+        android:text="@string/show_song_info" />
 
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center" />
+    <TextView
+        android:id="@+id/jsonView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/textStyle" />
+    
 
 </LinearLayout>

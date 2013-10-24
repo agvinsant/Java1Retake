@@ -38,7 +38,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.LinearLayout.LayoutParams;
 
 
 public class MainActivity extends Activity {
@@ -53,14 +52,17 @@ public class MainActivity extends Activity {
 	String artistName;
 	String albumName;
 	String trackSite;
+	String trackPreview;
 	String headString;
 	public static URL finalURL;
+	int pos;
 
 	
 	ArrayList<String> artistNameList = new ArrayList<String>();
 	ArrayList<String> albumNameList = new ArrayList<String>();
 	ArrayList<String> trackSiteList = new ArrayList<String>();
 	ArrayList<String> trackNameList = new ArrayList<String>();
+	ArrayList<String> trackPreviewList = new ArrayList<String>();
 	
 	Boolean connected = false;
 	
@@ -71,6 +73,7 @@ public class MainActivity extends Activity {
 		// setting the context
 		context = this;
 		res = getResources();
+		
 		// setting song array and head string
 		genreName = res.getStringArray(R.array.genreArray);
 		headString = res.getString(R.string.header);
@@ -89,9 +92,7 @@ public class MainActivity extends Activity {
 		spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		
 		//creating the spinner
-		viewSpinner = new Spinner(context);
-		LayoutParams sp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-		viewSpinner.setLayoutParams(sp);
+		viewSpinner = (Spinner) findViewById(R.id.spinner1);
 		viewSpinner.setAdapter(spinnerAdapter);
 		
 		//spinner onClick function
@@ -110,7 +111,12 @@ public class MainActivity extends Activity {
 			}
 
 		});
+		
+		// setting the spinner position variable
+		 pos = viewSpinner.getSelectedItemPosition();
 
+		// setting the jsonView from layout
+		jsonView = (TextView) findViewById(R.id.jsonView);
 		
 		// Creating button from resource layout
 		Button mb = (Button) findViewById(R.id.button1);
@@ -119,28 +125,22 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// Get selected song info
-				int pos = viewSpinner.getSelectedItemPosition();
 				String arName = artistNameList.get(pos).toString();
 				String alName = albumNameList.get(pos).toString();  
 				String tSite = trackSiteList.get(pos).toString();
 				String tName = trackNameList.get(pos).toString();
 				
-				// setting the jsonView parameters and such
-				jsonView = new TextView(context);
-				LayoutParams jp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-				jsonView.setLayoutParams(jp);
-				
 				// setting items into the jsonView and formating for style
 				jsonView.setText("Song Name:  " + tName + "\r\n" + "\r\n" + "Artist Name:   " +arName+ "\r\n"+ "\r\n"+"Album Name:   "+alName+ "\r\n" +"\r\n"+ "Song Website:   " +tSite);
+				
 				
 			}
 		});
 		
+		String tPreview = trackPreviewList.get(pos).toString();
 		
 		// creating the connection view to show the device's connection status
-		connectedView = new TextView(context);
-		LayoutParams cp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-		connectedView.setLayoutParams(cp);
+		connectedView = (TextView) findViewById(R.id.connectionView);
 		
 		//Detecting network settings
 		connected = WebClass.getConnectionStatus(context);
@@ -240,12 +240,14 @@ public class MainActivity extends Activity {
 							albumName = child.getString("collectionName");
 							trackSite= child.getString("trackViewUrl");
 							trackName = child.getString("trackName");
+							trackPreview = child.getString("trackPreview");
 							
 							//populating the array lists
 							artistNameList.add(artistName);
 							albumNameList.add(albumName);  
 							trackSiteList.add(trackSite);
 							trackNameList.add(trackName);
+							trackPreviewList.add(trackPreview);
 					}
 			
 					} catch (JSONException e) {
