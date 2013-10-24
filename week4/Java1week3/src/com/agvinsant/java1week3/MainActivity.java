@@ -5,12 +5,10 @@
  * 
  * @author Adam Vinsant
  * 
- * date Oct 15, 2013
+ * date Oct 15, 2013 / Oct 22, 2013
  * 
  */
 package com.agvinsant.java1week3;
-
-
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -32,6 +30,7 @@ import android.content.res.Resources;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -54,8 +53,10 @@ public class MainActivity extends Activity {
 	String trackSite;
 	String trackPreview;
 	String headString;
+	String tPreview;
 	public static URL finalURL;
 	int pos;
+	Button webButton;
 
 	
 	ArrayList<String> artistNameList = new ArrayList<String>();
@@ -85,8 +86,6 @@ public class MainActivity extends Activity {
 		TextView headView = (TextView) findViewById(R.id.headView);
 		headView.setText(headString);
 		
-		 
-				
 		//spinner adapter
 		ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, genreName);
 		spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -100,14 +99,12 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id) {
-				
+					int position, long id) {				
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
 				// TODO Auto-generated method stub
-
 			}
 
 		});
@@ -133,11 +130,26 @@ public class MainActivity extends Activity {
 				// setting items into the jsonView and formating for style
 				jsonView.setText("Song Name:  " + tName + "\r\n" + "\r\n" + "Artist Name:   " +arName+ "\r\n"+ "\r\n"+"Album Name:   "+alName+ "\r\n" +"\r\n"+ "Song Website:   " +tSite);
 				
-				
+				webButton.setVisibility(View.VISIBLE);
 			}
 		});
 		
-		String tPreview = trackPreviewList.get(pos).toString();
+	   tPreview = trackPreviewList.get(pos).toString();
+		
+		// button to switch to webView in Chrome
+		webButton = (Button) findViewById(R.id.button2);
+		webButton.setVisibility(View.INVISIBLE);
+		webButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				
+				// setting the web view for the Listen Now button... 	This will send the user to the preview page for the selected song.
+				WebView webView = (WebView) findViewById(R.id.webView);
+				webView.loadUrl(tPreview);
+			}
+
+		});
 		
 		// creating the connection view to show the device's connection status
 		connectedView = (TextView) findViewById(R.id.connectionView);
