@@ -41,6 +41,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 
 public class MainActivity extends Activity {
 
+	// Global Variables
 	Context context;
 	Resources res;
 	String[] genreName;
@@ -55,7 +56,6 @@ public class MainActivity extends Activity {
 	int pos;
 	Button mb;
 	TextView headView;
-
 	
 	ArrayList<String> artistNameList = new ArrayList<String>();
 	ArrayList<String> albumNameList = new ArrayList<String>();
@@ -217,11 +217,9 @@ public class MainActivity extends Activity {
 				Log.i("URL RESPONSE", result);
 				
 		try {
-						
-						Log.i("TRYING JSON", "trying json");
-						
+						// Initiating the main JSON object
 						JSONObject mainJSON = new JSONObject(result);
-			
+						// Creating the JSON result array. This makes a variable that drills down into the results array in the API JSON.
 						JSONArray jsonResult = mainJSON.getJSONArray("results");
 							
 						int n = jsonResult.length();
